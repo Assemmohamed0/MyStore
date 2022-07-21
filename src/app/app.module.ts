@@ -11,6 +11,7 @@ import { CartComponent } from './components/cart/cart.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,7 +13,7 @@
                                 <p class="my-3">${{product.price}}</p>
                                 <div>
                                     <span>Amount:</span>
-                                    <input class="px-1 text-center" type="number" (change)="changeAmount($event , i)" accept="number" [value]="product.amount" (keypress)="numberOnly($event)">
+                                    <input class="px-1 text-center" type="number"  accept="number" [(ngModel)]="product.amount" (keypress)="numberOnly($event)" (ngModelChange)="changeAmount($event , i)" >
                                     <div class="w-100 mt-3 delete-product" (click)="deleteProduct(product)">
                                         <!-- <i class="fa-solid fa-trash fs-3 text-danger trash-icon"></i> -->
                                         <p class="text-danger delete-message">Delete This Product <i class="fa-solid fa-trash fs-5 text-danger"></i></p>

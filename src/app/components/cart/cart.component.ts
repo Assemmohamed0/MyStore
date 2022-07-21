@@ -47,9 +47,9 @@ export class CartComponent implements OnInit {
   }
 
   // called when changing amount of products would be bought
-  changeAmount(newAmountEvent:any , id:number)
+  changeAmount(newAmountEvent:number , id:number)
   {
-    if(newAmountEvent.target.value >0 )
+    if(newAmountEvent >0 )
     {
       this.ProductsService.productsPurchasedSetter = {
         description: this.allPurchasedProducts[id].description,
@@ -57,8 +57,8 @@ export class CartComponent implements OnInit {
         name: this.allPurchasedProducts[id].name,
         price: this.allPurchasedProducts[id].price,
         url: this.allPurchasedProducts[id].url,
-        amount:Number(newAmountEvent.target.value),
-        totalPrice:Number(newAmountEvent.target.value)*this.allPurchasedProducts[id].price
+        amount:Number(newAmountEvent),
+        totalPrice:Number(newAmountEvent)*this.allPurchasedProducts[id].price
       };
       // to reflect the changes
       this.allPurchasedProducts = this.ProductsService.productsPurchasedGetter;
