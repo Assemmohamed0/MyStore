@@ -1,0 +1,47 @@
+<div>
+    <div class="product-card py-3">
+        <div class="p-4">
+            <div [routerLink]="['/details' , product.id]" class="product-item-image p-3"> <!-- (click)="displayDetails()" -->
+                <img class="img-fluid" [src]="product.url" alt="">
+            </div>
+        </div>
+        <div class="product-item-info text-center">
+            <h3>{{product.name}}</h3>
+            <p>${{product.price}}</p>
+            <div class="form-floating">
+              <select #selection class="form-select py-0" id="floatingSelect" aria-label="Floating label select example" [value]="amount">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#staticBackdrop" (click)="setProductPurchased(selection)">Add To Cart</button>
+        </div>
+    </div>
+
+    <!-- Modal to alert user that product was added to cart successfully -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Adding Product to Cart</h5>
+            
+            </div>
+            <div class="modal-body">
+                This Product Was Added Successfully to Your Cart ✔️
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-success m-auto" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+    

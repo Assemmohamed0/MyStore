@@ -1,0 +1,57 @@
+<section class="py-5">
+    <div class="all-cart-items py-2">
+        <div class="row">
+            <div class="cart-item col-lg-4 col-md-10 offset-2">
+                <div *ngFor="let product of allPurchasedProducts;let i=index">
+                    <div class="row">
+                        <div class="cart-item-img col-md-5 my-2">
+                            <img class="img-fluid" [src]="product.url" alt="">
+                        </div>
+                        <div class="cart-item-info col-md-5 offset-1 d-flex align-items-center my-2">
+                            <div>
+                                <h4>{{product.name}}</h4>
+                                <p class="my-3">${{product.price}}</p>
+                                <div>
+                                    <span>Amount:</span>
+                                    <input class="px-1 text-center" type="number" (change)="changeAmount($event , i)" accept="number" [value]="product.amount" (keypress)="numberOnly($event)">
+                                    <div class="w-100 mt-3 delete-product" (click)="deleteProduct(product)">
+                                        <!-- <i class="fa-solid fa-trash fs-3 text-danger trash-icon"></i> -->
+                                        <p class="text-danger delete-message">Delete This Product <i class="fa-solid fa-trash fs-5 text-danger"></i></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submission Form -->
+            <div class="col-md-12 d-flex align-items-center justify-content-center" [ngClass]="allPurchasedProducts.length==0 ? 'col-lg-12' : 'col-lg-4 '">
+                <form action="" [formGroup]="submissionForm" (ngSubmit)="submitOrder()">
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="(minimum 3 characters)" formControlName="fullName">
+                      </div>
+                      <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="(minimum 6 characters)" formControlName="address">
+                      </div>
+                      <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Credit Card Number</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="(16-digit number)" formControlName="creditCardNum">
+                        <p class="text-muted">We'll never share your payment details with anyone else.</p>
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="submissionForm.invalid || allPurchasedProducts.length==0 || totalPrice==0">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- error message if ther's no products purchased -->
+        <div class="text-danger text-center my-3" *ngIf="allPurchasedProducts.length==0">
+            Please Choose Items To Purchase First!
+        </div>
+          
+    </div>
+    
+    <h3 class="total-price" *ngIf="allPurchasedProducts.length!=0">Total: ${{totalPrice}}</h3>
+</section>

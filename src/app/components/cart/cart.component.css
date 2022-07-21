@@ -1,0 +1,22 @@
+/* Cart Page */
+.cart-item-img img {
+  border-radius: 1rem;
+}
+
+.cart-item-info input {
+  width: 80px;
+  margin-left: 10px;
+}
+
+.total-price {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.delete-product {
+  cursor: pointer;
+}
+
+.delete-message {
+  font-size: .9rem;
+}

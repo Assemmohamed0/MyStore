@@ -1,0 +1,21 @@
+/* Product Item Component */
+.product-item-image {
+    border: 1px solid #33b6e5d5;
+    cursor: pointer;
+}
+
+.form-select ,
+.product-item-info button {
+    width: 155px;
+    height: 2.5rem;
+    margin: 15px auto;
+}
+
+.form-select option {
+    background-color: #666;
+    color: white;
+}
+
+.form-select option:hover {
+    background-color: #999;
+}

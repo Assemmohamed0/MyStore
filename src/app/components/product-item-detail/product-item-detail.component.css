@@ -1,0 +1,29 @@
+/* Details Page */
+.form-select ,
+.addBtn {
+    width: 115px;
+    height: 2.5rem;
+    margin: 15px 0px;
+}
+
+.form-select option {
+    background-color: #666;
+    color: white;
+}
+
+.form-select option:hover {
+    background-color: #999;
+}
+
+.back-btn {
+    color: #33b6e5;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+
+.product-detail-image img {
+    border-radius: 1rem;
+}

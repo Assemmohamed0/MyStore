@@ -1,0 +1,12 @@
+/* Confirmation Page */
+.success-text {
+    color: #33e5bc;
+}
+
+.confirmation {
+    height: 75vh;
+}
+
+.confirmation span {
+    font-weight: bold;
+}

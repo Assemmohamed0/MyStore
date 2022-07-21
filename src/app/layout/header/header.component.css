@@ -1,0 +1,26 @@
+/* Header */
+.bg-main {
+    background-color: #33b5e5;
+}
+
+nav ul li {
+    list-style-type: none;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: rgb(214, 214, 214);
+    cursor: pointer;
+}
+
+.nav-content {
+    width: auto;
+}
+
+.nav-content i {
+    color: #777;
+}
