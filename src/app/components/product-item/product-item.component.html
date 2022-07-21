@@ -22,26 +22,10 @@
                 <option value="10">10</option>
               </select>
             </div>
-            <button class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#staticBackdrop" (click)="setProductPurchased(selection)">Add To Cart</button>
+            <button class="btn btn-primary" (click)="setProductPurchased(selection)">Add To Cart</button>
         </div>
     </div>
 
-    <!-- Modal to alert user that product was added to cart successfully -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Adding Product to Cart</h5>
-            
-            </div>
-            <div class="modal-body">
-                This Product Was Added Successfully to Your Cart ✔️
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-success m-auto" data-bs-dismiss="modal">OK</button>
-            </div>
-        </div>
-        </div>
-    </div>
+    
 </div>
     

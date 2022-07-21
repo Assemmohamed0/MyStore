@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Products } from '../../models/Products';
 import { ProductsService } from '../../services/products.service';
 import { Router } from '@angular/router';
@@ -14,6 +14,9 @@ export class ProductItemComponent implements OnInit {
   // input to get data from parent to child
   @Input() product:Products;
   amount:number = 1;
+
+  @Output() productNameContainer:EventEmitter<object> = new EventEmitter<object>();
+
   // to check whether the product were purchased or not
   purchasedFound?:ProductsPurchased;
 
@@ -51,6 +54,15 @@ export class ProductItemComponent implements OnInit {
       amount : selection.value,
       totalPrice : this.product.price * selection.value
     };
+
+    this.alertUser(selection.value);
+
+  }
+
+  // to alert user that product added successfully
+  alertUser(amount:number)
+  {
+    this.productNameContainer.emit({productName: this.product.name, amount: amount});
   }
 
 }

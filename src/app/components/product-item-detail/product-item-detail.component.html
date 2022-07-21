@@ -44,7 +44,8 @@
             
             </div>
             <div class="modal-body">
-                This Product Was Added Successfully to Your Cart ✔️
+                <span *ngIf="selection.value !== '1'">There're {{selection.value}} copies of {{productItem.name}} were Added Successfully to Your Cart ✔️</span>
+                <span *ngIf="selection.value === '1'">There's {{selection.value}} copy of {{productItem.name}} was Added Successfully to Your Cart ✔️</span>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-success m-auto" data-bs-dismiss="modal">OK</button>

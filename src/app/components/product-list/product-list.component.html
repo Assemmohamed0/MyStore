@@ -1,5 +1,25 @@
 <section class="py-5">
     <div class="row">
-        <app-product-item class="col-md-4" *ngFor="let product of productList" [product]="product"></app-product-item>
+        <app-product-item class="col-md-4" *ngFor="let product of productList" [product]="product" (productNameContainer)="productDetailsAdded($event)"></app-product-item>
+    </div>
+
+    <!-- Modal to alert user that product was added to cart successfully -->
+    <button  data-bs-toggle="modal" class="d-none" data-bs-target="#staticBackdrop" #modalBtn>Show Modal</button>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Adding Product to Cart</h5>
+            
+            </div>
+            <div class="modal-body">
+                <span *ngIf="productAmount >= 2">There're {{productAmount}} copies of {{productName}} were Added Successfully to Your Cart ✔️</span>
+                <span *ngIf="productAmount == 1">There's {{productAmount}} copy of {{productName}} was Added Successfully to Your Cart ✔️</span>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-success m-auto" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+        </div>
     </div>
 </section>
