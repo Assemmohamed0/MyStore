@@ -1,52 +1,26 @@
 import { Injectable } from '@angular/core';
 
-// importing HttpClient to enable fetching data
-import { HttpClient } from '@angular/common/http';
-
 // importing Models
-import { Products } from '../models/Products';
-import { ProductsPurchased } from '../models/ProductsPurchased';
-import { Users } from '../models/Users';
+import { ProductsPurchased } from '../../models/ProductsPurchased';
+import { Users } from '../../models/Users';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class CartService {
 
   // class Properties
-  allProducts:Products[] = [];
   productsPurchased:ProductsPurchased[] = [];
   allUsers:Users[] = [];
   totalPrice:number = 0;
 
-  constructor(private http:HttpClient) {
-
-   }
+  constructor() { }
 
 
   /*========================================================(Methods)========================================================*/
 
-  /*-----------------------------------------------------(all products)-----------------------------------------------------*/
-
-  // to fetch all products from json file
-  getProducts()
-  {
-    this.http.get<Products[]>("assets/data.json").subscribe((dd)=>{this.allProductsSetter(dd)});
-    return this.http.get<Products[]>("assets/data.json");
-  }
-
-  // to set all products
-  allProductsSetter(data:any)
-  {
-    this.allProducts = data;
-  }
-
-  // to get all products
-  get allProductsGetter()
-  {
-    return this.allProducts;
-  }
-
+  
   /*-----------------------------------------------------(total price)-----------------------------------------------------*/
 
   // calculate total price
@@ -115,5 +89,6 @@ export class ProductsService {
   }
 
   
+
 
 }

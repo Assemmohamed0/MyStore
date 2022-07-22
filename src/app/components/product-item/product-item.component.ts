@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Products } from '../../models/Products';
-import { ProductsService } from '../../services/products.service';
+import { CartService } from '../../services/cart/cart.service';
 import { Router } from '@angular/router';
 import { ProductsPurchased } from '../../models/ProductsPurchased';
 
@@ -20,7 +20,7 @@ export class ProductItemComponent implements OnInit {
   // to check whether the product were purchased or not
   purchasedFound?:ProductsPurchased;
 
-  constructor(private router:Router , private ProductsService:ProductsService) {
+  constructor(private router:Router , private CartService:CartService) {
     this.product={
       description : "",
         id : 0,
@@ -32,7 +32,7 @@ export class ProductItemComponent implements OnInit {
 
   ngOnInit(): void {
     // to check whether the product were purchased or not to make amount equalls in each component and to get the right amount of product if it was purchased
-    if(this.purchasedFound = this.ProductsService.productsPurchasedGetter.find( ({ id }) => id === Number(this.product.id) ))
+    if(this.purchasedFound = this.CartService.productsPurchasedGetter.find( ({ id }) => id === Number(this.product.id) ))
     {
       this.amount = this.purchasedFound.amount;
     }
@@ -44,7 +44,7 @@ export class ProductItemComponent implements OnInit {
   // to set a product to products purchased
   setProductPurchased(selection:any)
   {
-    this.ProductsService.productsPurchasedSetter = {
+    this.CartService.productsPurchasedSetter = {
 
       description : this.product.description,
       id : this.product.id,

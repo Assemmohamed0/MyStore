@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import { ProductsService } from '../../services/products.service';
+import { CartService } from '../../services/cart/cart.service';
 import { ProductsPurchased } from '../../models/ProductsPurchased';
 import { Router } from '@angular/router';
 
@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
   // form builder to track and validate form inputs
   submissionForm:FormGroup;
 
-  constructor(private fb:FormBuilder , private ProductsService:ProductsService , private router:Router) {
+  constructor(private fb:FormBuilder , private CartService:CartService , private router:Router) {
     this.submissionForm = this.fb.group({
       "fullName" : [null , [Validators.required , Validators.minLength(3)]],
       "address" : [null , [Validators.required , Validators.minLength(6)]],
@@ -28,8 +28,8 @@ export class CartComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.allPurchasedProducts = this.ProductsService.productsPurchasedGetter;
-    this.totalPrice = this.ProductsService.calculateTotalPrice();
+    this.allPurchasedProducts = this.CartService.productsPurchasedGetter;
+    this.totalPrice = this.CartService.calculateTotalPrice();
   }
 
   /*========================================================(Methods)========================================================*/
@@ -37,7 +37,7 @@ export class CartComponent implements OnInit {
   // to submit order
   submitOrder()
   {
-    this.ProductsService.allUsersSetter = {
+    this.CartService.allUsersSetter = {
       fullName:this.submissionForm.get('fullName')?.value,
       Address:this.submissionForm.get('address')?.value,
       creditCard:this.submissionForm.get('creditCardNum')?.value
@@ -51,7 +51,7 @@ export class CartComponent implements OnInit {
   {
     if(newAmountEvent >0 )
     {
-      this.ProductsService.productsPurchasedSetter = {
+      this.CartService.productsPurchasedSetter = {
         description: this.allPurchasedProducts[id].description,
         id:this.allPurchasedProducts[id].id,
         name: this.allPurchasedProducts[id].name,
@@ -61,8 +61,8 @@ export class CartComponent implements OnInit {
         totalPrice:Number(newAmountEvent)*this.allPurchasedProducts[id].price
       };
       // to reflect the changes
-      this.allPurchasedProducts = this.ProductsService.productsPurchasedGetter;
-      this.totalPrice = this.ProductsService.calculateTotalPrice();
+      this.allPurchasedProducts = this.CartService.productsPurchasedGetter;
+      this.totalPrice = this.CartService.calculateTotalPrice();
     }
     else //if the amount is zero or less then delete the product
     {
@@ -81,8 +81,8 @@ export class CartComponent implements OnInit {
   // to delete product from products purchased
   deleteProduct(product:ProductsPurchased)
   {
-    this.allPurchasedProducts = this.ProductsService.deleteProductPurchased(product);
-    this.totalPrice = this.ProductsService.calculateTotalPrice();
+    this.allPurchasedProducts = this.CartService.deleteProductPurchased(product);
+    this.totalPrice = this.CartService.calculateTotalPrice();
   }
 
 }

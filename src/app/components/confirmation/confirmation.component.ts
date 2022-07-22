@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ProductsService } from '../../services/products.service';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -10,15 +10,15 @@ export class ConfirmationComponent implements OnInit , OnDestroy {
 
   totalPrice:number = 0;
   fullName:string = "";
-  constructor(private ProductsService:ProductsService) { }
+  constructor(private CartService:CartService) { }
 
   ngOnInit(): void {
-    this.totalPrice = this.ProductsService.totalPriceGetter;
-    this.fullName = this.ProductsService.allUsersGetter.slice(-1)[0].fullName;
+    this.totalPrice = this.CartService.totalPriceGetter;
+    this.fullName = this.CartService.allUsersGetter.slice(-1)[0].fullName;
   }
 
   ngOnDestroy(): void {
-      this.ProductsService.resetProductsPurchased();
+      this.CartService.resetProductsPurchased();
   }
 
 
